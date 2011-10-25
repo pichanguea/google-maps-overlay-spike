@@ -1,0 +1,3 @@
+La url de la vista es:
+http://localhost:8000/maps/-33.442697/-70.620312/15/
+el primer parametro es latitud, el segundo longitud, y el tercero zoom
