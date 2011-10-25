@@ -1,16 +1,22 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
+import time
+from selenium import webdriver
 from django.test import TestCase
 
+class GoogleMapClickTest(TestCase):
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+    def setUp(self):
+        self.driver = webdriver.Chrome()
+
+    def test_user_can_click_on_marker(self):
+        self.driver.get('http://localhost:8000/maps/?latitude=-33.442697&longitude=-70.620312&zoom=15')
+
+        mouse = webdriver.ActionChains(self.driver)
+        google_map = self.driver.find_element_by_id('map')
+        mouse.move_to_element_with_offset(google_map, 300, 275).click().perform()
+        time.sleep(2)
+        marker_html_container = self.driver.find_element_by_class_name('mensaje')
+        
+        self.assertEqual(marker_html_container.text, u'Texto ejemplo\nfoo')
+        
+    def tearDown(self):
+        self.driver.close()
