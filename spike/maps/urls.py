@@ -5,7 +5,8 @@ from django.conf.urls.defaults import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('maps.views',
-    url(r'^maps/(-?[0-9]*|-?\d*\.\d{1}?\d*)/(-?[0-9]*|-?\d*\.\d{1}?\d*)/(\d+)/$', 'google'),
+    url(r'^maps/', 'google')
+    #url(r'^maps/(-?[0-9]*|-?\d*\.\d{1}?\d*)/(-?[0-9]*|-?\d*\.\d{1}?\d*)/(\d+)/$', 'google'),
     # Examples:
     # url(r'^$', 'spike.views.home', name='home'),
     # url(r'^spike/', include('spike.foo.urls')),
